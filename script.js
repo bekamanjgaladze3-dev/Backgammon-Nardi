@@ -105,15 +105,29 @@ console.log("White:", whiteChekers.length);
 }
 
 
-function makePossibleMoves(e){
+function makePossibleMoves(e) {
+    const Allpointers = document.querySelectorAll(".checker-stack");
+    const diceresult = (state.randomIndex + 1) + (state.randomIndex2 + 1);
+    const id = Number(e.target.id);
 
-   const diceresult = state.randomIndex + state.randomIndex2;
-   const i = e.target.id;
-   console.log(i)
+    // Remove old ghost checkers
+    Allpointers.forEach((item) => {
+        item.querySelectorAll(".checker-ghost").forEach((ghost) => ghost.remove());
+    });
 
-    
+    for(let i = 0; i < diceresult; i++){
+
+       const direction = state.randomIndex + state.randomIndex2;
+        if(direction > Allpointers.length) break;
+
+       if(state.players[state.activePlayerIndex] === "White's turn"){
+      
+           
+
+       }
+    }
+  
 }
-
 
 
 
