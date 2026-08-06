@@ -69,8 +69,8 @@ drawChekers();
 function rollAnimation(){
 
    const timeOut = setInterval(()=>{
-           state.randomIndex = Math.trunc(Math.random() * state.urlOfDice.length - 1);
-  state.randomIndex2 = Math.trunc(Math.random() * state.urlOfDice.length - 1);
+           state.randomIndex = Math.trunc(Math.random() * state.urlOfDice.length);
+  state.randomIndex2 = Math.trunc(Math.random() * state.urlOfDice.length)
     state.dices[0].src = state.urlOfDice[state.randomIndex];
       state.dices[1].src = state.urlOfDice[state.randomIndex2];
      },60)
@@ -106,29 +106,57 @@ console.log("White:", whiteChekers.length);
 
 
 function makePossibleMoves(e) {
-    const Allpointers = document.querySelectorAll(".checker-stack");
-    const diceresult = (state.randomIndex + 1) + (state.randomIndex2 + 1);
-    const id = Number(e.target.id);
 
-    // Remove old ghost checkers
-    Allpointers.forEach((item) => {
-        item.querySelectorAll(".checker-ghost").forEach((ghost) => ghost.remove());
-    });
+    const diceResult = (state.randomIndex + 1) + (state.randomIndex2 + 1);
+    const currentPoint = Number(
+        e.target.closest("[data-point]").dataset.point
+    );
 
-    for(let i = 0; i < diceresult; i++){
+    // Remove previous ghost checkers
+    document.querySelectorAll(".checker-ghost").forEach(ghost => ghost.remove());
 
-       const direction = state.randomIndex + state.randomIndex2;
-        if(direction > Allpointers.length) break;
+    for (let i = 1; i <= diceResult; i++) {
 
-       if(state.players[state.activePlayerIndex] === "White's turn"){
-      
-           
+        let destination;
 
-       }
+        if (state.players[state.activePlayerIndex] === "White's turn") {
+            destination = currentPoint + i;
+        } else {
+            destination = currentPoint - i;
+        }
+
+        if (destination < 1 || destination > 24) break;
+
+        const stack = document.querySelector(
+            `[data-point="${destination}"] .checker-stack`
+        );
+
+        if (!stack) continue;
+
+        if (
+            state.players[state.activePlayerIndex] === "White's turn" &&
+            stack.querySelector(".checker-black")
+        ) {
+            continue;
+        }
+
+        if (
+            state.players[state.activePlayerIndex] === "Black's turn" &&
+            stack.querySelector(".checker-white")
+        ) {
+            continue;
+        }
+
+        stack.insertAdjacentHTML(
+            "beforeend",
+            `<div class="checker checker-${
+                state.players[state.activePlayerIndex] === "White's turn"
+                    ? "white"
+                    : "black"
+            } checker-ghost"></div>`
+        );
     }
-  
 }
-
 
 
 
