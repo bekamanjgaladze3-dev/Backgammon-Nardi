@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nardi Board Game</title>
+  <link rel="stylesheet" href="Nardi.css">
+</head>
+<body>
+
+  <div class="game-container">
+    <!-- Header / Info Bar -->
+    <header class="game-header">
+      <div class="player-info player-white">
+        <span class="player-name">White Player</span>
+        <span class="off-count" id="white-off-count">Off: 0</span>
+      </div>
+      <div class="turn-indicator" id="turn-indicator">White's Turn</div>
+      <div class="player-info player-black">
+        <span class="player-name">Black Player</span>
+        <span class="off-count" id="black-off-count">Off: 0</span>
+      </div>
+    </header>
+
+    <!-- Main Nardi Board -->
+    <div class="nardi-board" id="board">
+      
+      <!-- Bear-Off / Out Tray Left (or Right depending on preference) -->
+      <div class="bear-off-zone" id="bear-off-white">
+        <div class="zone-label">White Out</div>
+        <div class="bear-off-stack" id="stack-off-white"></div>
+      </div>
+
+      <!-- Main Board Frame -->
+      <div class="board-frame">
+        
+        <!-- Top Half (Points 13 to 24) -->
+        <div class="board-half board-top">
+          <!-- Outer Quad (Points 13 - 18) -->
+          <div class="quadrant quad-top-left">
+            <div class="point point-down point-even" data-point="13">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-down point-odd" data-point="14">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-down point-even" data-point="15">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-down point-odd" data-point="16">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-down point-even" data-point="17">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-down point-odd" data-point="18">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+          </div>
+
+          <!-- Central Bar / Hinge -->
+          <div class="center-bar"></div>
+
+          <!-- Inner Quad (Points 19 - 24) -->
+          <div class="quadrant quad-top-right">
+            <div class="point point-down point-even" data-point="19">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-down point-odd" data-point="20">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-down point-even" data-point="21">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-down point-odd" data-point="22">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-down point-even" data-point="23">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-down point-odd" data-point="24">
+              <div class="triangle"></div>
+              <!-- Example initial placement: White Head (Nardi starting position) -->
+              <div class="checker-stack">
+               
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center Divider with Dice Controls -->
+        <div class="board-divider">
+          <div class="dice-area">
+            <div class="dice-container" id="dice-container">
+              <div class="die" id="die1"><img src="dice-1.png" alt=""></div>
+              <div class="die" id="die2"><img src="dice-6.png" alt=""></div>
+            </div>
+            <button class="roll-btn" id="roll-btn">Roll Dice</button>
+          </div>
+        </div>
+
+        <!-- Bottom Half (Points 12 down to 1) -->
+        <div class="board-half board-bottom">
+          <!-- Outer Quad (Points 12 - 7) -->
+          <div class="quadrant quad-bottom-left">
+            <div class="point point-up point-odd" data-point="12">
+              <div class="triangle"></div>
+              <!-- Example initial placement: Black Head (Nardi starting position) -->
+              <div class="checker-stack">
+                
+              </div>
+            </div>
+            <div class="point point-up point-even" data-point="11">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-up point-odd" data-point="10">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-up point-even" data-point="9">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-up point-odd" data-point="8">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-up point-even" data-point="7">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+          </div>
+
+          <!-- Central Bar / Hinge -->
+          <div class="center-bar"></div>
+
+          <!-- Inner Quad (Points 6 - 1) -->
+          <div class="quadrant quad-bottom-right">
+            <div class="point point-up point-odd" data-point="6">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-up point-even" data-point="5">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-up point-odd" data-point="4">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-up point-even" data-point="3">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-up point-odd" data-point="2">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+            <div class="point point-up point-even" data-point="1">
+              <div class="triangle"></div>
+              <div class="checker-stack"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bear-Off / Out Tray Right -->
+      <div class="bear-off-zone" id="bear-off-black">
+        <div class="zone-label">Black Out</div>
+        <div class="bear-off-stack" id="stack-off-black"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
