@@ -1,30 +1,30 @@
 window.addEventListener("DOMContentLoaded", ()=>{
   // ნარდის დაფის პოზიციების ობიექტი (1-დან 24-ის ჩათვლით)
 const nardiBoardState = [
-   { player: 'black', count: 2 },
-   { player: null,    count: 0 },
-    { player: 'white', count: 1 },
-    { player: null,    count: 0 },
-   { player: 'black', count: 3 },
-   { player: null,    count: 0 },
-  { player: 'white', count: 2 },
-  { player: null,    count: 0 },
-   { player: null,    count: 0 },
-   { player: 'black', count: 1 },
-     { player: null,    count: 0 },
-  { player: 'black', count: 9 }, // შავების დარჩენილი „თავი“
-  { player: 'white', count: 3 },
-  { player: null,    count: 0 },
-  { player: null,    count: 0 },
-  { player: 'black', count: 0 },
-  { player: 'white', count: 2 },
-  { player: null,    count: 0 },
-  { player: 'white', count: 2 },
+  { player: 'black', count: 2 }, // Point 1 (Black's 24)
   { player: null,    count: 0 },
   { player: null,    count: 0 },
   { player: null,    count: 0 },
   { player: null,    count: 0 },
-  { player: 'white', count: 5 }  // თეთრების დარჩენილი „თავი“
+  { player: 'white', count: 5 }, // Point 6
+  { player: null,    count: 0 },
+  { player: 'white', count: 3 }, // Point 8
+  { player: null,    count: 0 },
+  { player: null,    count: 0 },
+  { player: null,    count: 0 },
+  { player: 'black', count: 5 }, // Point 12 (Midpoint)
+  { player: 'white', count: 5 }, // Point 13 (Midpoint)
+  { player: null,    count: 0 },
+  { player: null,    count: 0 },
+  { player: null,    count: 0 },
+  { player: 'black', count: 3 }, // Point 17
+  { player: null,    count: 0 },
+  { player: 'black', count: 5 }, // Point 19
+  { player: null,    count: 0 },
+  { player: null,    count: 0 },
+  { player: null,    count: 0 },
+  { player: null,    count: 0 },
+  { player: 'white', count: 2 }  // Point 24 (White's 24)
 ];
 
 const state = {
@@ -56,7 +56,7 @@ function drawChekers(){
 
     stackEl.insertAdjacentHTML(
       "beforeend",
-      `<div class="checker checker-${currentState.player}"></div>`.repeat(currentState.count)
+      `<div class="checker checker-${currentState.player}" id=${i}></div>`.repeat(currentState.count)
     );
   }
 }
@@ -108,6 +108,9 @@ console.log("White:", whiteChekers.length);
 function makePossibleMoves(e){
 
    const diceresult = state.randomIndex + state.randomIndex2;
+   const i = e.target.id;
+   console.log(i)
+
     
 }
 
