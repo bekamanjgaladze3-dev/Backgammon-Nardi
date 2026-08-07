@@ -51,7 +51,7 @@ function drawChekers(){
 
   if (currentState.player !== null && currentState.count > 0) {
     
-    const pointEl = document.querySelector(`[data-point="${i + 1}"]`);
+    const pointEl = document.querySelector(`[data-point="${i}"]`);
     const stackEl = pointEl.querySelector('.checker-stack') || pointEl.children[1];
 
     stackEl.insertAdjacentHTML(
@@ -108,55 +108,32 @@ console.log("White:", whiteChekers.length);
 function makePossibleMoves(e) {
 
     const diceResult = (state.randomIndex + 1) + (state.randomIndex2 + 1);
-    const currentPoint = Number(
+    let currentPoint = Number(
         e.target.closest("[data-point]").dataset.point
     );
+
+    const allPoints = Array.from(document.querySelectorAll("[data-point]"))
+  .sort((a, b) => Number(a.dataset.point) - Number(b.dataset.point));
+  
+     
+
+
 
     // Remove previous ghost checkers
     document.querySelectorAll(".checker-ghost").forEach(ghost => ghost.remove());
 
-    for (let i = 1; i <= diceResult; i++) {
+   for(let i = 0; i > diceResult; i++){
 
-        let destination;
-
-        if (state.players[state.activePlayerIndex] === "White's turn") {
-            destination = currentPoint + i;
-        } else {
-            destination = currentPoint - i;
-        }
-
-        if (destination < 1 || destination > 24) break;
-
-        const stack = document.querySelector(
-            `[data-point="${destination}"] .checker-stack`
-        );
-
-        if (!stack) continue;
-
-        if (
-            state.players[state.activePlayerIndex] === "White's turn" &&
-            stack.querySelector(".checker-black")
-        ) {
-            continue;
-        }
-
-        if (
-            state.players[state.activePlayerIndex] === "Black's turn" &&
-            stack.querySelector(".checker-white")
-        ) {
-            continue;
-        }
-
-        stack.insertAdjacentHTML(
-            "beforeend",
-            `<div class="checker checker-${
-                state.players[state.activePlayerIndex] === "White's turn"
-                    ? "white"
-                    : "black"
-            } checker-ghost"></div>`
-        );
-    }
+     console.log( allPoints[currentPoint + i + 1])
+   }
 }
+
+
+//    for(let i = diceResult; i > 0; i--){
+
+//      console.log( allPoints[currentPoint - i])
+//    }
+// }
 
 
 
