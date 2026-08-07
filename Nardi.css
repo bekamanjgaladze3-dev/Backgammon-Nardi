@@ -355,14 +355,14 @@ body {
 
 /* White ghost */
 .checker-ghost.checker-white {
-  background: rgba(255,255,255,0.45);
-  border-color: rgba(255,255,255,0.8);
+  background: rgba(192, 35, 35, 0.922);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 /* Black ghost */
 .checker-ghost.checker-black {
-  background: rgba(40,40,40,0.45);
-  border-color: rgba(220,220,220,0.7);
+ background: rgba(192, 35, 35, 0.922);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 @keyframes ghostPulse {

@@ -41,6 +41,9 @@ isRoll: false
 }
 
 
+const turn_indicator = document.querySelector("#turn-indicator")
+
+ turn_indicator.innerHTML = state.players[state.activePlayerIndex]
 // Code goes Below =======================================================================================
 
 
@@ -115,10 +118,6 @@ function makePossibleMoves(e) {
     const allPoints = Array.from(document.querySelectorAll("[data-point]"))
   .sort((a, b) => Number(a.dataset.point) - Number(b.dataset.point));
   
-     
-
-
-
     // Remove previous ghost checkers
     document.querySelectorAll(".checker-ghost").forEach(ghost => ghost.remove());
 
@@ -128,14 +127,28 @@ function makePossibleMoves(e) {
 
       if(state.players[state.activePlayerIndex] === "White's turn"){
 
-         if(allPoints[currentPoint + i + 1].children[1].children.length !== 0 && allPoints[currentPoint + i + 1].children[1].children[0].classList.contains("checker-black")) break;
+         if(allPoints[currentPoint + i].children[1].children.length !== 0 && allPoints[currentPoint + i].children[1].children[0].classList.contains("checker-black")) break;
          
-         allPoints[currentPoint + i + 1].children[1].insertAdjacentHTML("beforeend", `<div class="checker checker-ghost" id=${i}></div>`)
+         allPoints[currentPoint + i].children[1].insertAdjacentHTML("beforeend", `<div class="checker checker-ghost" id=${i}></div>`)
       }
-
     }
-    
+
    }
+
+ for(let i = 0; i < diceResult; i++){
+
+    if(state.isRoll){
+
+      if(state.players[state.activePlayerIndex] === "Black's turn"){
+   
+         if(allPoints[currentPoint - i].children[1].children.length !== 0 && allPoints[currentPoint - i].children[1].children[0].classList.contains("checker-white")) break;
+         
+         allPoints[currentPoint - i].children[1].insertAdjacentHTML("beforeend", `<div class="checker checker-ghost" id=${i}></div>`)
+         
+      }
+    } 
+   }
+
 }
 
 
