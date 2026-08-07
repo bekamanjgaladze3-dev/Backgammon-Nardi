@@ -124,7 +124,17 @@ function makePossibleMoves(e) {
 
    for(let i = 0; i < diceResult; i++){
 
-     console.log(allPoints[currentPoint + i + 1])
+    if(state.isRoll){
+
+      if(state.players[state.activePlayerIndex] === "White's turn"){
+
+         if(allPoints[currentPoint + i + 1].children[1].children.length !== 0 && allPoints[currentPoint + i + 1].children[1].children[0].classList.contains("checker-black")) break;
+         
+         allPoints[currentPoint + i + 1].children[1].insertAdjacentHTML("beforeend", `<div class="checker checker-ghost" id=${i}></div>`)
+      }
+
+    }
+    
    }
 }
 
