@@ -1,30 +1,30 @@
 window.addEventListener("DOMContentLoaded", ()=>{
   // ნარდის დაფის პოზიციების ობიექტი (1-დან 24-ის ჩათვლით)
 const nardiBoardState = [
-  { player: 'black', count: 2 }, // Point 1 (Black's 24)
-  { player: null,    count: 0 },
-  { player: null,    count: 0 },
-  { player: null,    count: 0 },
-  { player: null,    count: 0 },
-  { player: 'white', count: 5 }, // Point 6
-  { player: null,    count: 0 },
-  { player: 'white', count: 3 }, // Point 8
-  { player: null,    count: 0 },
-  { player: null,    count: 0 },
-  { player: null,    count: 0 },
-  { player: 'black', count: 5 }, // Point 12 (Midpoint)
-  { player: 'white', count: 5 }, // Point 13 (Midpoint)
-  { player: null,    count: 0 },
-  { player: null,    count: 0 },
-  { player: null,    count: 0 },
-  { player: 'black', count: 3 }, // Point 17
-  { player: null,    count: 0 },
-  { player: 'black', count: 5 }, // Point 19
-  { player: null,    count: 0 },
-  { player: null,    count: 0 },
-  { player: null,    count: 0 },
-  { player: null,    count: 0 },
-  { player: 'white', count: 2 }  // Point 24 (White's 24)
+  { player: 'white', count: 2 }, // Point 0  (2 White)
+  { player: null,    count: 0 }, // Point 1
+  { player: null,    count: 0 }, // Point 2
+  { player: null,    count: 0 }, // Point 3
+  { player: null,    count: 0 }, // Point 4
+  { player: 'black', count: 5 }, // Point 5  (5 Black)
+  { player: null,    count: 0 }, // Point 6
+  { player: 'black', count: 3 }, // Point 7  (3 Black)
+  { player: null,    count: 0 }, // Point 8
+  { player: null,    count: 0 }, // Point 9
+  { player: null,    count: 0 }, // Point 10
+  { player: 'white', count: 5 }, // Point 11 (5 White)
+  { player: 'black', count: 5 }, // Point 12 (5 Black)
+  { player: null,    count: 0 }, // Point 13
+  { player: null,    count: 0 }, // Point 14
+  { player: null,    count: 0 }, // Point 15
+  { player: 'white', count: 3 }, // Point 16 (3 White)
+  { player: null,    count: 0 }, // Point 17
+  { player: 'white', count: 5 }, // Point 18 (5 White)
+  { player: null,    count: 0 }, // Point 19
+  { player: null,    count: 0 }, // Point 20
+  { player: null,    count: 0 }, // Point 21
+  { player: null,    count: 0 }, // Point 22
+  { player: 'black', count: 2 }  // Point 23 (2 Black)
 ];
 
 const state = {
@@ -122,9 +122,9 @@ function makePossibleMoves(e) {
     // Remove previous ghost checkers
     document.querySelectorAll(".checker-ghost").forEach(ghost => ghost.remove());
 
-   for(let i = 0; i > diceResult; i++){
+   for(let i = 0; i < diceResult; i++){
 
-     console.log( allPoints[currentPoint + i + 1])
+     console.log(allPoints[currentPoint + i + 1])
    }
 }
 
